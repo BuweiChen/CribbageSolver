@@ -75,9 +75,33 @@ function scoreRuns(cardArr) {
     return 0;
 }
 
+function scoreFlush(cardArr) {
+    cardArr = cardArr.map(card => card.suit);
+    console.log(cardArr);
+    const suits = ["h", "s", "c", "d"];
+    let cntFlush = 0;
+    for (let suit of suits) {
+        cntFlush = Math.max(cardArr.filter(card => card == suit).length, cntFlush);
+    }
+    return cntFlush >= 4 ? cntFlush : 0;
+}
+
 function checkScore(cardArr) {
     cardArr = sortCards(cardArr);
     let pairScore = scorePairs(cardArr);
     let fifteenScore = scoreFifteens(cardArr);
     let runScore = scoreRuns(cardArr);
+    let flushScore = scoreFlush(cardArr);
+    return pairScore + fifteenScore + runScore + flushScore;
 }
+
+export {
+    sortCards, 
+    scorePairs, 
+    countWaysToSum, 
+    scoreFifteens, 
+    countRunsOfN, 
+    scoreRuns, 
+    scoreFlush, 
+    checkScore
+};
