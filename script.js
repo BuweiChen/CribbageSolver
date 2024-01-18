@@ -1,3 +1,5 @@
+const eval = require("./eval.js");
+
 const handElems = [...document.querySelectorAll('div[class^="card "][class$=" up bottom"]')];
 const hand = handElems.map(cardElem => cardElem.getAttribute("class").substring(5, 8).trim());
 // e.g. hand = [s1, d2, h3, c10]
