@@ -9,3 +9,4 @@ const handCards = hand.map(card => {
     }
     return c;
 });
+
